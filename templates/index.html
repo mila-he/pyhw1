@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kohvikud</title>
+</head>
+<body>
+    <h1>Kohvikute nimekiri</h1>
+
+    <form method="GET" action="/kohvikud">
+        <label for="start">Avatud alates:</label>
+        <input type="time" id="start" name="start">
+
+        <label for="end">Kuni:</label>
+        <input type="time" id="end" name="end">
+
+        <button type="submit">Otsi</button>
+    </form>
+
+    <h2>Lisa uus kohvik</h2>
+    <form method="POST" action="/kohvikud">
+        <label for="name">Kohviku nimi:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="location">Asukoht:</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="time_open">Avatakse:</label>
+        <input type="time" id="time_open" name="time_open" required>
+
+        <label for="time_closed">Suletakse:</label>
+        <input type="time" id="time_closed" name="time_closed" required>
+
+        <button type="submit">Lisa kohvik</button>
+    </form>
+
+    <h2>Olemasolevad kohvikud</h2>
+    <ul>
+        {% for kohvik in kohvikud %}
+            <li>{{ kohvik }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
